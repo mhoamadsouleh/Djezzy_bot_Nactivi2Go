@@ -137,15 +137,10 @@ def process_otp(msg, msisdn):
             hours, remainder = divmod(status['remaining'].seconds, 3600)
             minutes = remainder // 60
             used_time_str = status['end_date'].strftime('%H:%M %d-%m-%Y')
-            bot.send_message(chat_id, f"⏳ لقد استخدمت الهدية مسبقًا!
-🕐 يمكنك المحاولة مجددًا بعد:
-{days} يوم، {hours} ساعة و {minutes} دقيقة
-📅 تاريخ انتهاء آخر هدية: {used_time_str}")
+            bot.send_message(chat_id, f"⏳ لقد استخدمت الهدية مسبقًا!\n🕐 يمكنك المحاولة مجددًا بعد:\n{days} يوم، {hours} ساعة و {minutes} دقيقة\n📅 تاريخ انتهاء آخر هدية: {used_time_str}")
         else:
             if activate_gift(msisdn, access_token):
-                bot.send_message(chat_id, f"🎉 تم تفعيل هدية 2Go بنجاح!
-📞 رقم: {hide_number(msisdn)}
-⏳ صالحة لمدة أسبوع")
+                bot.send_message(chat_id, f"🎉 تم تفعيل هدية 2Go بنجاح!\n📞 رقم: {hide_number(msisdn)}\n⏳ صالحة لمدة أسبوع")
             else:
                 bot.send_message(chat_id, "⚠️ فشل في تفعيل الهدية. قد تكون مفعلة بالفعل.")
     else:
